@@ -1,5 +1,6 @@
 import "./App.css";
 import { useState, useEffect } from "react";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const TodoApp = () => {
   const [tasks, setTasks] = useState(() => {
@@ -71,7 +72,7 @@ const TodoApp = () => {
         id='list-container'
         className='space-y-2'
       >
-        {tasks.map((task, index) => (
+        {/* {tasks.map((task, index) => (
           <li
             key={index}
             className={`flex justify-between items-center p-2 border rounded ${
@@ -90,7 +91,30 @@ const TodoApp = () => {
               onClick={() => deleteTask(index)}
               className='ml-4 text-red-500 cursor-pointer hover:text-red-600'
             >
-              ✖
+              <RiDeleteBin6Line />
+            </span>
+          </li>
+        ))} */}
+        {tasks.map((task, index) => (
+          <li
+            key={index}
+            className={`flex justify-between items-center p-2 border rounded ${
+              task.completed
+                ? "line-through text-gray-400"
+                : "text-white"
+            } bg-gray-700`}
+          >
+            <span
+              className='flex-1 cursor-pointer'
+              onClick={() => toggleTask(index)}
+            >
+              {task.text}
+            </span>
+            <span
+              className='ml-4 text-gray-400 cursor-pointer hover:text-white'
+              onClick={() => deleteTask(index)}
+            >
+              <RiDeleteBin6Line />
             </span>
           </li>
         ))}
